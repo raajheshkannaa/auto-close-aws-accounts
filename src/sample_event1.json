@@ -1,0 +1,38 @@
+{
+	"eventVersion": "1.08",
+	"userIdentity": {
+		"type": "IAMUser",
+		"principalId": "AIDAWZC5ZPDAABBCCDDEE",
+		"arn": "arn:aws:iam::1234567891011:user/user123",
+		"accountId": "1234567891011",
+		"accessKeyId": "ASIAWZC5ZPAABBCCDDEE",
+		"userName": "user123",
+		"sessionContext": {
+			"sessionIssuer": {},
+			"webIdFederationData": {},
+			"attributes": {
+				"creationDate": "2022-03-12T05:08:55Z",
+				"mfaAuthenticated": "true"
+			}
+		}
+	},
+	"eventTime": "2022-03-12T06:58:39Z",
+	"eventSource": "organizations.amazonaws.com",
+	"eventName": "MoveAccount",
+	"awsRegion": "us-east-1",
+	"sourceIPAddress": "101.11.11.111",
+	"userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36",
+	"requestParameters": {
+		"accountId": "920024193878",
+		"destinationParentId": "r-g11a",
+		"sourceParentId": "ou-g11a-r7abcdef"
+	},
+	"responseElements": null,
+	"requestID": "78935d88-788d-4e80-8257-2c7edba7feac",
+	"eventID": "582bc4df-47fd-40a0-bfc6-b8afe7457eca",
+	"readOnly": false,
+	"eventType": "AwsApiCall",
+	"managementEvent": true,
+	"recipientAccountId": "1234567891011",
+	"eventCategory": "Management"
+}

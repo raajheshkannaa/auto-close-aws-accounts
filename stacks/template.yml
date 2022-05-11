@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Revert Security Group
+
+  
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 900
+
+Resources:
+  AutoCloseAccounts:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: autocloseaccounts
+      Role: "arn:aws:iam::466200656080:role/close-account-role"
+      Handler: close_accounts.main
+      Runtime: python3.8
+      MemorySize: 128
+      Timeout: 900
+      Events:
+        Trigger:
+          Type: CloudWatchEvent 
+          Properties:
+            Pattern:
+              source:
+                - aws.organizations
+              detail-type:
+                - 'AWS Service Event via CloudTrail'                
+              detail:
+                eventname:
+                  - 'MoveAccount'
+

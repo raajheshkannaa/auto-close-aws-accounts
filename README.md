@@ -13,6 +13,15 @@ With a sigh of relief 😮‍💨 at last, AWS has recently announced a straight
 
 5. All of this built and deployed as a CDK App 🔥
 
+![AutoCloseAccounts](AutoCloseAccounts.gif)
+
+## Explanation
+In the above gif example, 
+* We make use of [Org Formation](https://github.com/org-formation/org-formation-cli) to update the yaml file which represents the `AWS Organization as code`, by adding the `TestAccount002Account` to the `OldOU` Organizational Unit.
+* Run, `org-formation update rk-org.yml` cli command which will update the Organization structure.
+* Once this is updated, the Lambda is triggered by the EventBridge event rule, based on the `MoveAccount` event.
+* The lambda initiates the Account Closure, which marks the account as `Suspended`.
+
 ## Usage
 > git clone https://github.com/raajheshkannaa/auto-close-aws-accounts
 * Update the `parent_id` variable in the `src/close_accounts.py` file with the Organizational Unit which will be the dumpyard for accounts to be closed.
@@ -22,3 +31,4 @@ With a sigh of relief 😮‍💨 at last, AWS has recently announced a straight
 ## Considerations
 * Because there is an account closure quota restriction of 10% of the total AWS Accounts in an Organizations, we have the second trigger invoking the lambda every 30 days, however if there was an account moved to the OU in the meantime, the next trigger of the lambda would still be unable to close the remaining accounts in the OU, as the 30 days period from the last closure is not completed.
 * However this should be okay in the long run, as the initial number of accounts will be high and would decrease as accounts are closed along the way.
+

@@ -1,4 +1,4 @@
-# Automatically Close AWS Accounts
+# Automatically Close AWS Accounts 😎
 
 With a sigh of relief 😮‍💨 at last, AWS has recently announced a straight forward easy way to `close` an AWS Account using an Organizations API call. 
 

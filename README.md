@@ -23,6 +23,8 @@ In the above gif example,
 * The lambda initiates the Account Closure, which marks the account as `Suspended`.
 
 ## Usage
+This is a CDK Project, which means you need to have CDK installed on your local system with `npm i -g aws-cdk`
+### Steps
 > git clone https://github.com/raajheshkannaa/auto-close-aws-accounts
 * Update the `parent_id` variable in the `src/close_accounts.py` file with the Organizational Unit which will be the dumpyard for accounts to be closed.
 > cdk deploy --profile aws-org-profile

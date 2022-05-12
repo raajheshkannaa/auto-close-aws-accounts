@@ -25,10 +25,11 @@ In the above gif example,
 ## Usage
 > git clone https://github.com/raajheshkannaa/auto-close-aws-accounts
 * Update the `parent_id` variable in the `src/close_accounts.py` file with the Organizational Unit which will be the dumpyard for accounts to be closed.
+> cdk deploy --profile aws-org-profile
+* This will deploy the EventBridge Rules and the Lambda function in the AWS Organizations Account. Deployment completed!
 * Move the accounts you want to close that Organizational Unit you updated in the first step.
 * Watch the accounts being closed automatically 😎 _(however would stop when it reaches the 10% quota)_ 😛
 
 ## Considerations
 * Because there is an account closure quota restriction of 10% of the total AWS Accounts in an Organizations, we have the second trigger invoking the lambda every 30 days, however if there was an account moved to the OU in the meantime, the next trigger of the lambda would still be unable to close the remaining accounts in the OU, as the 30 days period from the last closure is not completed.
 * However this should be okay in the long run, as the initial number of accounts will be high and would decrease as accounts are closed along the way.
-
